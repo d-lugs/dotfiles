@@ -20,7 +20,7 @@ alias cp='cp -i'
 alias mv='mv -i'
 
 # Custom alias section
-alias clear='clear && cat /etc/motd'
+alias clear='clear -x'
 alias sudos='sudo su -'
 
 if [ "$(id -u)" -eq 0 ]; then
@@ -29,3 +29,4 @@ if [ "$(id -u)" -eq 0 ]; then
 else
   # normal user
   PS1='\[\e[38;5;129;1m\]\u\[\e[0;90m\]@\[\e[97m\]\H \[\e[90m\][\[\e[0m\]\w\[\e[90m\]]\[\e[0m\]\$ '
+fi
