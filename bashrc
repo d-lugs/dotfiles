@@ -26,7 +26,10 @@ alias sudos='sudo su -'
 if [ "$(id -u)" -eq 0 ]; then
   # root
   PS1='\[\e[91;1m\]\u\[\e[0;90m\]@\[\e[97m\]\H \[\e[90m\][\[\e[0m\]\w\[\e[90m\]]\[\e[0m\]\$ '
-else
-  # normal user
+elif [ "$(id -u)" -eq 1000 ]; then
+  # main user
   PS1='\[\e[38;5;129;1m\]\u\[\e[0;90m\]@\[\e[97m\]\H \[\e[90m\][\[\e[0m\]\w\[\e[90m\]]\[\e[0m\]\$ '
+else
+  # other
+  PS1='\u\[\e[2m\]@\[\e[0m\]\H \[\e[2m\][\[\e[0m\]\w\[\e[2m\]]\[\e[0m\]\$ '
 fi
