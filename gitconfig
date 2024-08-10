@@ -1,0 +1,9 @@
+[user]
+        name = d-lugs
+        email = dclustig28@gmail.com
+[color]
+        ui = auto
+[push]
+        default = matching
+[pull]
+        rebase = false

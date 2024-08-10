@@ -1,11 +1,10 @@
-# basic colored bash prompt
+#!/usr/bin/env bash
 
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# If not running interactively, don't do anything
+[[ -n $PS1 ]] || return
 
-# Note: PS1 and umask are already set in /etc/profile. You should not
-# need this unless you want different defaults for root.
-# PS1='${debian_chroot:+($debian_chroot)}\h:\w\$ '
-# umask 022
+# Set Environment variables
+export TZ='America/New_York'
 
 # Colorized 'ls' output:
 export LS_OPTIONS='--color=auto'
@@ -14,22 +13,26 @@ alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -lh'
 alias l='ls $LS_OPTIONS -lAh'
 
-# Some more alias to avoid making mistakes:
+# Safety precautions:
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-# Custom alias section
+# Aliases
 alias clear='clear -x'
 alias sudos='sudo su -'
+alias ..='echo "cd .."; cd ..'
+grep --color=auto < /dev/null &>/dev/null && alias grep='grep --color=auto' # colorized grep (if supported)
 
+# bashrc color prompt
+# <user>@<hostname> [<pwd>]<$|#> 
 if [ "$(id -u)" -eq 0 ]; then
-  # root
+  # root (red)
   PS1='\[\e[91;1m\]\u\[\e[0;90m\]@\[\e[97m\]\H \[\e[90m\][\[\e[0m\]\w\[\e[90m\]]\[\e[0m\]\$ '
 elif [ "$(id -u)" -eq 1000 ]; then
-  # main user
+  # main user (purple)
   PS1='\[\e[38;5;129;1m\]\u\[\e[0;90m\]@\[\e[97m\]\H \[\e[90m\][\[\e[0m\]\w\[\e[90m\]]\[\e[0m\]\$ '
 else
-  # other
+  # other (white)
   PS1='\u\[\e[2m\]@\[\e[0m\]\H \[\e[2m\][\[\e[0m\]\w\[\e[2m\]]\[\e[0m\]\$ '
 fi
