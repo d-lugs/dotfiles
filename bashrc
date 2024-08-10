@@ -4,7 +4,9 @@
 [[ -n $PS1 ]] || return
 
 # Set Environment variables
+export EDITOR='vim'
 export TZ='America/New_York'
+export VISUAL='vim'
 
 # Colorized 'ls' output:
 export LS_OPTIONS='--color=auto'
@@ -14,9 +16,9 @@ alias ll='ls $LS_OPTIONS -lh'
 alias l='ls $LS_OPTIONS -lAh'
 
 # Safety precautions:
-alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+alias rm='rm -i'
 
 # Aliases
 alias clear='clear -x'
