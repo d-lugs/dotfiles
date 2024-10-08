@@ -29,13 +29,11 @@ grep --color=auto < /dev/null &>/dev/null && alias grep='grep --color=auto' # co
 # bashrc color prompt
 if [ "$(id -u)" -eq 0 ]; then
         # root (green)
-        PS1='\e[32;1m\]\u\e[0m\e[2;30m@\[\e[37m\]\H \[\e[2;30m[\e[0m\w\e[2;30m]\e[0m\$ '
+        PS1='\[\e[32;1m\]\u\[\e[0;30;2m\]@\[\e[0m\]\H\[\e[37;2m\] \[\e[30m\][\[\e[0m\]\w\[\e[30;2m\]]\[\e[0m\]\$ '
 elif [ "$(id -u)" -eq 1000 ]; then
         # main user (red)
-        PS1='\e[31;1m\]\u\e[0m\e[2;30m@\[\e[37m\]\H \[\e[2;30m[\e[0m\w\e[2;30m]\e[0m\$ '
+        PS1='\[\e[31;1m\]\u\[\e[0;30;2m\]@\[\e[0m\]\H\[\e[37;2m\] \[\e[30m\][\[\e[0m\]\w\[\e[30;2m\]]\[\e[0m\]\$ '
 else
         # other (white)
-        PS1='\u\[\e[2m\]@\[\e[0m\]\H \[\e[2m\][\[\e[0m\]\w\[\e[2m\]]\[\e[0m\]\$ '
+        PS1='\[\e[1m\]\u\[\e[0;30;2m\]@\[\e[0m\]\H\[\e[37;2m\] \[\e[30m\][\[\e[0m\]\w\[\e[30;2m\]]\[\e[0m\]\$ '
 fi
-
-
