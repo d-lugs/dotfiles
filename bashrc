@@ -8,6 +8,10 @@ export EDITOR='vim'
 export TZ='America/New_York'
 export VISUAL='vim'
 
+# Add ssh identity
+eval $(ssh-agent)
+ssh-add ~/.ssh/carbon_ed25519_sk
+
 # Colorized 'ls' output:
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors)"
@@ -28,12 +32,12 @@ grep --color=auto < /dev/null &>/dev/null && alias grep='grep --color=auto' # co
 
 # bashrc color prompt
 if [ "$(id -u)" -eq 0 ]; then
-        # root (green)
-        PS1='\[\e[32;1m\]\u\[\e[0;30;2m\]@\[\e[0m\]\H\[\e[37;2m\] \[\e[30m\][\[\e[0m\]\w\[\e[30;2m\]]\[\e[0m\]\$ '
+	# root (green)
+	PS1='\[\e[32;1m\]\u\[\e[0;30;2m\]@\[\e[0m\]\H\[\e[37;2m\] \[\e[30m\][\[\e[0m\]\w\[\e[30;2m\]]\[\e[0m\]\$ '
 elif [ "$(id -u)" -eq 1000 ]; then
-        # main user (red)
-        PS1='\[\e[31;1m\]\u\[\e[0;30;2m\]@\[\e[0m\]\H\[\e[37;2m\] \[\e[30m\][\[\e[0m\]\w\[\e[30;2m\]]\[\e[0m\]\$ '
+	# main user (red)
+	PS1='\[\e[31;1m\]\u\[\e[0;30;2m\]@\[\e[0m\]\H\[\e[37;2m\] \[\e[30m\][\[\e[0m\]\w\[\e[30;2m\]]\[\e[0m\]\$ '
 else
-        # other (white)
-        PS1='\[\e[1m\]\u\[\e[0;30;2m\]@\[\e[0m\]\H\[\e[37;2m\] \[\e[30m\][\[\e[0m\]\w\[\e[30;2m\]]\[\e[0m\]\$ '
+	# other (white)
+	PS1='\[\e[1m\]\u\[\e[0;30;2m\]@\[\e[0m\]\H\[\e[37;2m\] \[\e[30m\][\[\e[0m\]\w\[\e[30;2m\]]\[\e[0m\]\$ '
 fi
