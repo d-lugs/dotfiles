@@ -30,6 +30,14 @@ set smartcase			" allows searches specifically for capital letters
 set tabstop=4
 
 " --------------------------------
+" Shortcuts
+" --------------------------------
+" map-command {lhs} {rhs}
+"
+" example:
+" nnoremap ,<space> :nhlsearch<CR>
+
+" --------------------------------
 " Init - plugins
 " --------------------------------
 "     :source .nvimrc   reload nvim config
