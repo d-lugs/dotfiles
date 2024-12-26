@@ -20,7 +20,8 @@ set hlsearch			" enable highlighting when searching
 set ignorecase			" ignore caps when searching
 set nobackup			" do not save backup files
 set nostartofline		" Do not jump to first character with page commands
-set number			" enable line numbers
+set number			" show current line number
+set relativenumber  " show relative line numbers
 set ruler			" Enable the ruler
 set shiftwidth=4
 set showmatch			" Show matching brackets.
@@ -36,6 +37,9 @@ set tabstop=4
 "
 " example:
 " nnoremap ,<space> :nhlsearch<CR>
+
+nnoremap <C-Up> <C-y>
+nnoremap <C-Down> <C-e>
 
 " --------------------------------
 " Init - plugins
