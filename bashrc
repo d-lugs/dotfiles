@@ -24,7 +24,10 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# Aliases
+# 256 color in tmux
+alias tmux='TERM=xterm-256color tmux'
+
+# Other Aliases
 alias clear='clear -x'
 alias sudos='sudo su -'
 alias ..='echo "cd .."; cd ..'
