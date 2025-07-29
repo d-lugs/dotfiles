@@ -21,7 +21,6 @@ set ignorecase			" ignore caps when searching
 set nobackup			" do not save backup files
 set nostartofline		" Do not jump to first character with page commands
 set number			" show current line number
-set relativenumber  " show relative line numbers
 set ruler			" Enable the ruler
 set shiftwidth=4
 set showmatch			" Show matching brackets.
@@ -38,8 +37,13 @@ set tabstop=4
 " example:
 " nnoremap ,<space> :nhlsearch<CR>
 
-nnoremap <C-Up> <C-y>
-nnoremap <C-Down> <C-e>
+" scroll in place
+nnoremap <c-up> <c-y>
+nnoremap <c-down> <c-e>
+
+" toggle relative line numbers
+nnoremap ln :set relativenumber!<cr>
+
 
 " --------------------------------
 " Init - plugins
@@ -63,7 +67,12 @@ call plug#end()
 let g:airline_theme = "nord_minimal"
 
 " --------------------------------
-" Highlight Unwanted Whitespace
+" Formatting
 " --------------------------------
+
+" Highlight Unwanted Whitespace
 highlight RedundantWhitespace ctermbg=green guibg=green
 match RedundantWhitespace /\s\+$\| \+\ze\t/
+
+" Change line number coloring
+highlight LineNr ctermfg=darkgrey
