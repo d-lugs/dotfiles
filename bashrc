@@ -24,12 +24,10 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 
-# 256 color in tmux
-alias tmux='TERM=xterm-256color tmux'
-
-# Other Aliases
+# Aliases
 alias clear='clear -x'
 alias sudos='sudo su -'
+alias xx='exit'
 alias ..='echo "cd .."; cd ..'
 grep --color=auto < /dev/null &>/dev/null && alias grep='grep --color=auto' # colorized grep (if supported)
 
