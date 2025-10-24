@@ -10,7 +10,7 @@ export VISUAL='vim'
 
 # Add ssh identity
 eval $(ssh-agent) 1>/dev/null
-ssh-add ~/.ssh/carbon_ed25519_sk 2>/dev/null
+ssh-add ~/.ssh/${HOSTNAME}_ed25519_sk 2>/dev/null
 
 # Colorized 'ls' output:
 export LS_OPTIONS='--color=auto'
