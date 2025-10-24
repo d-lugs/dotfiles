@@ -69,7 +69,9 @@ function cd() {
 	fi
 }
 
-# function venv() {
+# activate venv if ./venv exists in curernt dir
+# or supply a dir name in ~/ as an argument to activate a specific env
+function venv() {
 	if [[ -d ./venv ]] ; then
 		source ./venv/Scripts/activate
 	elif [[ -d ~/$1/venv ]] ; then
