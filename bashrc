@@ -63,7 +63,7 @@ function cd() {
 		# ${var,,} converts to lowercase
 		# if yes then do nothing, else deactivate
 		parentdir="$(dirname "$VIRTUAL_ENV")"
-		if [[ "${PWD,,}"/ != "${parentdir,,}/* ]] ; then
+		if [[ "${PWD,,}"/ != "${parentdir,,}/*" ]] ; then
 			deactivate
 		fi
 	fi
