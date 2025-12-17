@@ -37,9 +37,12 @@ set tabstop=4
 " example:
 " nnoremap ,<space> :nhlsearch<CR>
 
-" scroll in place
-nnoremap <c-up> <c-y>
-nnoremap <c-down> <c-e>
+" scroll in place without cursor
+nnoremap <S-up> 5<c-y>
+nnoremap <S-down> 5<c-e>
+" scroll 1/2 screen with cursor
+nnoremap <c-up> <c-u>
+nnoremap <c-down> <c-d>
 
 " toggle relative line numbers
 nnoremap ln :set relativenumber!<cr>
