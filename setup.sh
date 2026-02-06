@@ -7,12 +7,15 @@ cd $path
 # pull dotfiles/dirs
 filelist=$(ls -l $path | grep '^-' | grep -vP "(README.md|setup.sh)" | awk '{print $NF}')
 for file in $filelist; do
-    cp $file "~./.$file"
+    cp -f $file ~/.$file
 done
 
 dirlist=$(ls -l $path | grep '^d' | awk '{print $NF}')
 for dir in $dirlist; do
-    cp -pR $dir "~/.config/"
+    if [ ! -d ~/.config ]; then
+        mkdir ~/.config
+    fi
+    cp -pR $dir ~/.config/$dir
 done
 
 # source dotfiles
