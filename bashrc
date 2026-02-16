@@ -4,9 +4,10 @@
 [[ -n $PS1 ]] || return
 
 # Set Environment variables
+export PATH='$HOME/.local/bin:$PATH'
 export EDITOR='vim'
-export TZ='America/New_York'
 export VISUAL='vim'
+export TZ='America/New_York'
 
 # Add ssh identity
 eval $(ssh-agent) 1>/dev/null
@@ -29,7 +30,10 @@ alias clear='clear -x'
 alias sudos='sudo su -'
 alias xx='exit'
 alias ..='echo "cd .."; cd ..'
-grep --color=auto < /dev/null &>/dev/null && alias grep='grep --color=auto' # colorized grep (if supported)
+alias py='python3'
+
+# colorized grep (if supported)
+grep --color=auto < /dev/null &>/dev/null && alias grep='grep --color=auto' 
 
 # bashrc color prompt
 if [ "$(id -u)" -eq 0 ]; then
