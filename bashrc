@@ -4,7 +4,7 @@
 [[ -n $PS1 ]] || return
 
 # Set Environment variables
-export PATH='$HOME/.local/bin:$PATH'
+export PATH='$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games'
 export EDITOR='vim'
 export VISUAL='vim'
 export TZ='America/New_York'
