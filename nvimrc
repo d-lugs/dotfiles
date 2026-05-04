@@ -47,6 +47,8 @@ nnoremap <c-down> <c-d>
 " toggle relative line numbers
 nnoremap ln :set relativenumber!<cr>
 
+" toggle line wrap
+nnoremap lw :set wrap!<cr>
 
 " --------------------------------
 " Init - plugins
