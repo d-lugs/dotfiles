@@ -17,8 +17,8 @@ ssh-add ~/.ssh/${HOSTNAME}_ed25519_sk 2>/dev/null
 export LS_OPTIONS='--color=auto'
 eval "$(dircolors)"
 alias ls='ls $LS_OPTIONS'
-alias ll='ls $LS_OPTIONS -lh'
-alias l='ls $LS_OPTIONS -lAh'
+alias l='ls $LS_OPTIONS -lh'
+alias ll='ls $LS_OPTIONS -lAh'
 
 # Safety precautions:
 alias cp='cp -i'
