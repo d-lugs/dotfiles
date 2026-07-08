@@ -13,20 +13,20 @@ set nocompatible
 set modelines=0
 
 " Basic settings
-set autoindent			" Default to indenting files
-set backspace=indent,eol,start	" Backspace all characters
-set expandtab			" space character instead of tabs
-set hlsearch			" enable highlighting when searching
-set ignorecase			" ignore caps when searching
-set nobackup			" do not save backup files
-set nostartofline		" Do not jump to first character with page commands
-set number			" show current line number
-set ruler			" Enable the ruler
+set autoindent                 " Default to indenting files
+set backspace=indent,eol,start " Backspace all characters
+set expandtab                  " space character instead of tabs
+set hlsearch                   " enable highlighting when searching
+set ignorecase                 " ignore caps when searching
+set nobackup                   " do not save backup files
+set nostartofline              " Do not jump to first character with page commands
+set number                     " show current line number
+set ruler                      " Enable the ruler
 set shiftwidth=4
-set showmatch			" Show matching brackets.
-set showmode			" Show the current mode in status line
-set showcmd			" Show partial command in status line
-set smartcase			" allows searches specifically for capital letters
+set showmatch                  " Show matching brackets.
+set showmode                   " Show the current mode in status line
+set showcmd                    " Show partial command in status line
+set smartcase                  " allows searches specifically for capital letters
 set tabstop=4
 
 " --------------------------------
@@ -51,25 +51,26 @@ nnoremap ln :set relativenumber!<cr>
 nnoremap lw :set wrap!<cr>
 
 " --------------------------------
-" Init - plugins
+" Init - plugins (vim-plug)
 " --------------------------------
 "     :source .nvimrc   reload nvim config
 "     :PlugInstall      to install plugins
 "     :PlugUpdate       to update plugins
 "     :PlugDiff         to review the changes from the last update
 "     :PlugClean        to remove plugins no longer in the list
+
 call plug#begin()
 Plug 'karb94/neoscroll.nvim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-polyglot/vim-polyglot'
 Plug 'godlygeek/tabular'
-Plug 'preservim/vim-markdown'
-Plug 'hdima/python-syntax'
 Plug 'dense-analysis/ale'
 call plug#end()
 
 " Plugin config
-let g:airline_theme = "nord_minimal"
+let g:airline_theme = "zenburn"
 
 " --------------------------------
 " Formatting
