@@ -6,7 +6,11 @@ rm -rf $path
 git clone -q https://github.com/d-lugs/dotfiles.git $path
 
 write_config(){
-    diff $1 $2
+    diff $1 $2 2>/dev/null
+    if [ $? -ne 0 ]; then
+        echo "No $2 found."
+    fi
+
     while true; do
         read -p "Update $(basename $1)? (y/n) " yn </dev/tty
         case $yn in
@@ -23,8 +27,6 @@ for file in $filelist; do
         continue
     elif [ -e ~/.$file ]; then
         echo "Changes to $file found."
-    else
-        echo "No $file found in ~"
     fi
     write_config $path/$file ~/.$file
 done
