@@ -23,6 +23,8 @@ for file in $filelist; do
         continue
     elif [ -e ~/.$file ]; then
         echo "Changes to $file found."
+    else
+        echo "No $file found in ~"
     fi
     write_config $path/$file ~/.$file
 done
@@ -34,7 +36,7 @@ for dir in $dirlist; do
     elif [ -d ~/.config/$dir ]; then
         echo "Changes to $dir found."
     fi
-    write_config $path/$dir ~/.config/$dir
+    write_config $path/$dir/ ~/.config
 done
 
 # source dotfiles
