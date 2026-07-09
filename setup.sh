@@ -14,7 +14,6 @@ write_config(){
             [Nn]*) echo "Skipping $1..." ; return 0 ;;
         esac
     done
-    return
 }
 
 # pull dotfiles/dirs
