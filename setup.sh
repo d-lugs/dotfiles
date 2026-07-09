@@ -18,7 +18,7 @@ user_confirm(){
 write_config(){
     diff $1 $2
     while true; do
-        read -p "Update $1? (y/n) " yn </dev/tty
+        read -p "Update $(basename $1)? (y/n) " yn </dev/tty
         case $yn in
             [Yy]*) cp -vrf $1 $2 ; return 0 ;;
             [Nn]*) echo "Skipping $1..." ; return 0 ;;
