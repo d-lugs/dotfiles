@@ -37,5 +37,5 @@
 ### Automatic Setup
 Run the following to deploy these dotfiles automatically
 ```
-curl https://raw.githubusercontent.com/d-lugs/dotfiles/refs/heads/main/setup.sh | bash
+curl -sS https://raw.githubusercontent.com/d-lugs/dotfiles/refs/heads/main/setup.sh | bash
 ```
