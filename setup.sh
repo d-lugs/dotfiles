@@ -5,16 +5,6 @@ path="/tmp/dotfiles"
 rm -rf $path
 git clone -q https://github.com/d-lugs/dotfiles.git $path
 
-user_confirm(){
-    while true; do
-        read -ep "Update $1? (y/n) " yn
-        case $yn in
-            [Yy]*) return 0 ;;
-            [Nn]*) return 1 ;;
-        esac
-    done
-}
-
 write_config(){
     diff $1 $2
     while true; do
