@@ -71,6 +71,7 @@ call plug#end()
 
 " Plugin config
 let g:airline_theme = "zenburn"
+let g:airline_section_z = 'l:%l/%L c:%c'
 
 " --------------------------------
 " Formatting
