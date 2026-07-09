@@ -1,8 +1,13 @@
 #!/usr/bin/bash
 
 # get absolute path of script
-path=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
-cd $path
+#path=$(cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P)
+#cd $path
+
+# pull latest dotfiles into a temp directory
+path="/tmp/dotfiles"
+rm -rf $path
+git clone -q https://github.com/d-lugs/dotfiles.git $path
 
 user_confirm(){
     while true; do
@@ -47,3 +52,6 @@ done
 . ~/.bashrc
 
 echo "Dotfiles are up to date."
+
+# cleanup
+rm -rf $path
