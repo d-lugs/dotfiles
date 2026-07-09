@@ -14,8 +14,8 @@ write_config(){
     while true; do
         read -p "Update $(basename $1)? (y/n) " yn </dev/tty
         case $yn in
-            [Yy]*) cp -vrf $1 $2 ; return 0 ;;
-            [Nn]*) echo "Skipping $1..." ; return 0 ;;
+            [Yy]*) mv -vf $1 $2 ; return 0 ;;
+            [Nn]*) echo "Skipping $(basename $1)..." ; return 0 ;;
         esac
     done
 }
@@ -38,7 +38,7 @@ for dir in $dirlist; do
     elif [ -d ~/.config/$dir ]; then
         echo "Changes to $dir found."
     fi
-    write_config $path/$dir/ ~/.config
+    write_config $path/$dir ~/.config/$dir
 done
 
 # source dotfiles
