@@ -12,7 +12,7 @@ filelist=$(find $path/dotfiles | cut -d'/' -f5- | grep -vP "^(.git/|README.md|se
 write_file(){
     diff $path/dotfiles/$file ~/$file 2>/dev/null
     while true; do
-        read -p "Write changes? (y/n) " yn </dev/tty
+        read -p "Write to ~/$file? (y/n) " yn </dev/tty
         case $yn in
             [Yy]*)
                 mkdir -p ~/$(dirname $file)
@@ -39,7 +39,9 @@ check_file(){
 }
 
 for file in $filelist; do
-    if [ -f $path/dotfiles/$file ]; then
+    if [ -d $path/dotfiles/$file ]; then
+        continue # later: add functionality to skip entire dir
+    elif [ -f $path/dotfiles/$file ]; then
         check_file $file
     fi
 done
