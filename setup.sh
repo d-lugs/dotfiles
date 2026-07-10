@@ -1,50 +1,51 @@
 #!/usr/bin/bash
 
 # pull latest dotfiles into a temp directory
-path="/tmp/dotfiles"
+path="/tmp/dotfiles$(date +%s)"
 rm -rf $path
 git clone -q https://github.com/d-lugs/dotfiles.git $path
 
-write_config(){
-    diff $1 $2 2>/dev/null
-    if [ $? -ne 0 ]; then
-        echo "No $2 found."
-    fi
+# go through each dotfile in repo
+filelist=$(find $path/dotfiles | cut -d'/' -f5- | grep -vP "^(.git/|README.md|setup.sh)$")
 
+# print diff, get user confirmation before writing
+write_file(){
+    diff $path/dotfiles/$file ~/$file 2>/dev/null
     while true; do
-        read -p "Update $(basename $1)? (y/n) " yn </dev/tty
+        read -p "Write changes? (y/n) " yn </dev/tty
         case $yn in
-            [Yy]*) mv -vf $1 $2 ; return 0 ;;
-            [Nn]*) echo "Skipping $(basename $1)..." ; return 0 ;;
+            [Yy]*)
+                mkdir -p ~/$(dirname $file)
+                cp -frv $path/dotfiles/$file ~/$file
+                return 0 ;;
+            [Nn]*)
+                echo -e "Skipping $(basename $1)..."
+                return 0 ;;
         esac
     done
 }
 
-# pull dotfiles/dirs
-filelist=$(ls -l $path | grep '^-' | grep -vP "(README.md|setup.sh)" | awk '{print $NF}')
+# check if file contains changes or exists
+check_file(){
+    if cmp -s -- $path/dotfiles/$file ~/$file 2>/dev/null && [ -e ~/$file ]; then
+        return
+    elif [ -e ~/$file ]; then
+        echo -e "\nChanges to ~/$file found."
+        write_file $file
+    else
+        echo -e "\n~/$file not found."
+        write_file $file
+    fi
+}
+
 for file in $filelist; do
-    if cmp -s -- $path/$file ~/.$file && [ -e ~/.$file ]; then
-        continue
-    elif [ -e ~/.$file ]; then
-        echo "Changes to $file found."
+    if [ -f $path/dotfiles/$file ]; then
+        check_file $file
     fi
-    write_config $path/$file ~/.$file
 done
 
-dirlist=$(ls -l $path | grep '^d' | awk '{print $NF}')
-for dir in $dirlist; do
-    if [ $(diff -r $path/$dir ~/.config/$dir 2>/dev/null | wc -l) -eq 0 ] && [ -d ~/.config/$dir ]; then
-        continue
-    elif [ -d ~/.config/$dir ]; then
-        echo "Changes to $dir found."
-    fi
-    write_config $path/$dir ~/.config/$dir
-done
+echo -e "\nDotfiles are up to date.\n"
 
-# source dotfiles
-. ~/.bashrc
-
-echo "Dotfiles are up to date."
-
-# cleanup
+# source and clean up
+source ~/.bashrc
 rm -rf $path
