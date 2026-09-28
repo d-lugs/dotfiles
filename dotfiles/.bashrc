@@ -31,6 +31,7 @@ alias sudos='sudo su -'
 alias xx='exit'
 alias ..='echo "cd .."; cd ..'
 alias py='python3'
+alias clip='xclip -selection clipboard'
 
 # colorized grep (if supported)
 grep --color=auto < /dev/null &>/dev/null && alias grep='grep --color=auto' 
