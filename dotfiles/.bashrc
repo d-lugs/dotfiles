@@ -61,7 +61,7 @@ function cd() {
 	if [[ -z "$VIRTUAL_ENV" || -d ./venv ]] ; then
 		# if env folder is foudn then activate the virtual environment
 		if [[ -d ./venv ]] ; then
-			source ./venv/Scripts/activate
+			source ./venv/bin/activate
 		fi
 	else
 		# check the current folder belongs to earlier VIRTUAL_ENV folder
