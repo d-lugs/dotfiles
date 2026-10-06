@@ -78,9 +78,9 @@ function cd() {
 # or supply a dir name in ~/ as an argument to activate a specific env
 function venv() {
 	if [[ -d ./venv ]] ; then
-		source ./venv/Scripts/activate
+		source ./venv/bin/activate
 	elif [[ -d ~/$1/venv ]] ; then
-		source ~/$1/venv/Scripts/activate
+		source ~/$1/venv/bin/activate
 	else
 		if [[ -v 1 ]] ; then
 			echo "~/$1/venv not found"
